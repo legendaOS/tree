@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лаба 1,2,3</title>
+    <style>
+        h3{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Отобразить дерево" id = 'btn'><br>
+
+    <hr>
+
+    <input class="n1" value="Расстояние по дереву" name = 'n1' type="radio" checked = 'checked'>Расстояние по дереву<br>
+    <input class="n1" value="Манхэттенское расстояние" name = 'n1' type="radio">Манхэттенское расстояние <br> 
+    <input class="n1" value="Евклидово расстояние" name = 'n1' type="radio">Евклидово расстояние     <br> 
+    <input class="n1" value="Расстояние Хэмминга" name = 'n1' type="radio">Расстояние Хэмминга <br> 
+    <input class="n1" value="Расстояние Чебышева" name = 'n1' type="radio">Расстояние Чебышева <br>
+    <input class="n1" value="Комплексное" name = 'n1' type="radio">Комплексное <br>  
+
+    <hr>
+
+    <input class="n2" value="Ближайший сосед" name = 'n2' type="radio" checked = 'checked'>Ближайший сосед<br>
+    <input class="n2" value="Дальний сосед" name = 'n2' type="radio" checked = 'checked'>Дальний сосед<br>
+    <input class="n2" value="Cредней связи" name = 'n2' type="radio" checked = 'checked'>Cредней связи<br>
+
+    <hr>
+
+    <input type="text" id = 'p1' placeholder="Продукт 1"> 
+    <input type="text" id = 'p2' placeholder="Продукт 2">
+    
+    <input type="button" value="Расстояние" id="btn2"> <br>
+    
+    
+
+    <hr>
+
+    <input type="text" id = 'p3' placeholder="Продукт">
+    <input type="button" value="Соседи" id="btn3"> <br>
+    
+
+    <hr>
+
+    <input type="button" value="Соседи" id="btn4"> <br>
+    <input type="text" class = 'm1' placeholder="Продукт"> 
+    <input type="button" value="Добавить" class="m2" onclick = 'ins_af_b($(this))'> 
+
+    <hr>
+
+    <input type="text" id = 'p4' placeholder="Продукт">
+    <input type="button" value="Больше не нравится" id="btn5"> <br>
+
+    <hr>
+
+    Максимальная цена <input type="text" id = 'tt1' value = '1000'><br>
+    Мининальная цена <input type="text" id = 'tt2' value = '0'><br>
+    Скидка больше <input type="text" id = 'tt3' value = '0'><br>
+    Доступно (да\нет) <input type="text" id = 'tt4' value="да"> <br>
+    Отзыв (отлично, хорошо, нормально) <input type="text" id = 'tt5' value="хорошо"> <br>
+
+    <hr>
+
+    <div id="sorted"></div>
+    <div id="rasst"></div>
+
+    <hr>
+
+    <input type="text" id = 'val_to_ii' size="100">
+    <input type="button" id = 'sbm_ii' value="Отправить">
+    <div id = 'result_to_ii'></div>
+    
+
+    <div id="main"></div>
+    <script src = './jquery-3.6.0.min.js'></script>
+    <script src="./main.js"></script>
+</body>
+</html>
