@@ -850,32 +850,41 @@ $("#btn5").click(function(){
             sem = create_semant_from_shema(sh)
             arr_of_res_prod = create_res_from_semant(sem)
 
-            arr_buf = arr_of_res_prod.slice()
-
-            // закинуть все в дизлайки что бы выдача не выдавала их еще раз
-            let buf = 0
-            for(elm of arr_of_res_prod)
+            if(typeof(arr_of_res_prod) == 'string')
             {
-                dislikes[elm.Name] = undefined
-                buf++
-                if (buf > 4) break
+                $("#result_to_ii").html(arr_of_res_prod)
             }
 
-            // собираем ответ
-
-            html_re = `Мы нашли для вас следующие товары <br> Вас это устраивает? (напишите да или нет) <br> <ul>`
-
-            for(elm of arr_of_res_prod)
+            else
             {
-                //добавляем товарчики
-                html_re += `<li> ${elm.Name} по цене ${elm.Price} с отзывами ${elm.Feedback} </li>`
+                arr_buf = arr_of_res_prod.slice()
+
+                // закинуть все в дизлайки что бы выдача не выдавала их еще раз
+                let buf = 0
+                for(elm of arr_of_res_prod)
+                {
+                    dislikes[elm.Name] = undefined
+                    buf++
+                    if (buf > 4) break
+                }
+
+                // собираем ответ
+
+                html_re = `Мы нашли для вас следующие товары <br> Вас это устраивает? (напишите да или нет) <br> <ul>`
+
+                for(elm of arr_of_res_prod)
+                {
+                    //добавляем товарчики
+                    html_re += `<li> ${elm.Name} по цене ${elm.Price} с отзывами ${elm.Feedback} </li>`
+                }
+
+                html_re += `</ul>`
+
+                $("#result_to_ii").html(html_re)
+
+                vid = 'confirm'
             }
-
-            html_re += `</ul>`
-
-            $("#result_to_ii").html(html_re)
-
-            vid = 'confirm'
+            
 
         }
 
@@ -1367,12 +1376,22 @@ function create_res_from_semant(semant)
         }
     }
 
-    
+    console.log(semant.products)
 
     result = fin_prod_sos(semant.products, para)
     console.log(result)
 
+    
 
+    if(result.length >= 5)
+    {
+        let resbufdel = []
+        for(i = 0; i < 5; i++)
+        {
+            resbufdel.push(result[i])
+        }
+        result = resbufdel
+    }
     
 
     return result
@@ -1384,17 +1403,23 @@ function fin_prod_sos(pr, para) // сортировка и поиск по пр�
     let mera = fnd_mr($('.n1'))
     let mera_nebin = fnd_mr($('.n2'))
 
-    let kostbuf = []
-    for (h of pr){ kostbuf.push(h.Name)}
+    arrObjMeriNeBin = pr
+
+    // let kostbuf = []
+    // for (h of pr){ kostbuf.push(h.Name)}
      
 
-    let objes = [kostbuf]
+    // let objes = [kostbuf]
 
-    let arrObjMeriNeBin = []
-    for(e of objes){
-        arrObjMeriNeBin.push(product_map[e])
-    }
+    // console.log(objes)
 
+    // let arrObjMeriNeBin = []
+    // for(e of objes){
+    //     arrObjMeriNeBin.push(product_map[e])
+    // }
+
+
+    // console.log(arrObjMeriNeBin)
 
     //to do
     //тупа пробросить cmp на каждый из списка 
@@ -1475,5 +1500,4 @@ function get_all_products_from_nodes(nodes){
 
     return ret_prod
 }
-
 
